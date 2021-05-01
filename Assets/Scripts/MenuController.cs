@@ -8,7 +8,7 @@ namespace CluckAndCollect
     {
         public Action ONPlayButtonClicked;
         public Action ONSettingsButtonClicked;
-        
+
         [SerializeField] private new Camera camera;
         [SerializeField] private Transform menuCameraPosition;
         [SerializeField] private Transform playCameraPosition;
@@ -34,7 +34,7 @@ namespace CluckAndCollect
             ONPlayButtonClicked += Play;
             ONSettingsButtonClicked += Settings;
         }
-        
+
         private void OnDisable()
         {
             ONPlayButtonClicked -= Play;
@@ -48,7 +48,7 @@ namespace CluckAndCollect
                 ONPlayButtonClicked();
             }
         }
-        
+
         public void SettingsButtonClicked()
         {
             if (ONSettingsButtonClicked != null)
@@ -69,7 +69,7 @@ namespace CluckAndCollect
             _cameraTransform.DOMove(playCameraPosition.position, 3f);
             _cameraTransform.DORotate(playCameraPosition.rotation.eulerAngles, 3f);
         }
-        
+
         private void Settings()
         {
             _cameraTransform.DOMove(settingsCameraPosition.position, 3f);
