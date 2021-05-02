@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace CluckAndCollect
 {
-    [RequireComponent(typeof(MenuController))]
     [RequireComponent(typeof(ChickenController))]
     [RequireComponent(typeof(EventManager))]
     public class GameManager : MonoBehaviour
@@ -13,8 +12,6 @@ namespace CluckAndCollect
         public GameState CurrentState { get; private set; }
 
         [SerializeField] private GameState startState;
-
-        private MenuController _menuController;
 
         private void Awake()
         {
@@ -26,8 +23,7 @@ namespace CluckAndCollect
             {
                 Instance = this;
             }
-
-            _menuController = GetComponent<MenuController>();
+            
             EventManager = GetComponent<EventManager>();
             CurrentState = startState;
         }

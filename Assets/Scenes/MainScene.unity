@@ -1051,7 +1051,6 @@ GameObject:
   - component: {fileID: 14048210}
   - component: {fileID: 14048209}
   - component: {fileID: 14048208}
-  - component: {fileID: 14048211}
   - component: {fileID: 14048212}
   m_Layer: 0
   m_Name: GameManager
@@ -1107,23 +1106,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &14048211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14048207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bccde8ac2559407789eccb00acc8dce2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camera: {fileID: 963194227}
-  menuCameraPosition: {fileID: 2108503738}
-  playCameraPosition: {fileID: 311224546}
-  settingsCameraPosition: {fileID: 407338953}
-  profilesCameraPosition: {fileID: 193857339}
 --- !u!114 &14048212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1136,13 +1118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a764ed06804d048a7762cb80e566ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onNewGame:
-    m_PersistentCalls:
-      m_Calls: []
   onStartSwitchState:
     m_PersistentCalls:
       m_Calls: []
   onFinishSwitchState:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartGame:
+    m_PersistentCalls:
+      m_Calls: []
+  onEndGame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &18217660 stripped
@@ -47713,13 +47698,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a764ed06804d048a7762cb80e566ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onNewGame:
-    m_PersistentCalls:
-      m_Calls: []
   onStartSwitchState:
     m_PersistentCalls:
       m_Calls: []
   onFinishSwitchState:
+    m_PersistentCalls:
+      m_Calls: []
+  onStartGame:
+    m_PersistentCalls:
+      m_Calls: []
+  onEndGame:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1992800367

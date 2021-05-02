@@ -21,7 +21,6 @@ namespace CluckAndCollect
             uI.alpha = currentState ? 1 : 0;
             uI.interactable = currentState;
             uI.blocksRaycasts = currentState;
-
         }
 
         private void StartSwitchState(GameState state)
