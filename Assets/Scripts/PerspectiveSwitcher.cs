@@ -6,6 +6,8 @@ namespace CluckAndCollect
     [RequireComponent(typeof(Camera))]
     public class PerspectiveSwitcher : MonoBehaviour
     {
+        public bool IsOrthographic { get; private set; }
+
         [SerializeField] private float fov = 60f;
         [SerializeField] private float near = .3f;
         [SerializeField] private float far = 1000f;
@@ -14,7 +16,6 @@ namespace CluckAndCollect
         private Matrix4x4 _orthographic;
         private Matrix4x4 _perspective;
         private float _aspect;
-        private bool _isOrthographic;
         private Camera _camera;
 
         private void Awake()
@@ -25,15 +26,15 @@ namespace CluckAndCollect
             _perspective = Matrix4x4.Perspective(fov, _aspect, near, far);
             _camera = GetComponent<Camera>();
             _camera.projectionMatrix = _perspective;
-            _isOrthographic = false;
+            IsOrthographic = false;
         }
 
         public void Switch(float duration, float ease, bool reverse)
         {
-            _isOrthographic = !_isOrthographic;
-            BlendToMatrix(_isOrthographic ? _orthographic : _perspective, duration, ease, reverse);
+            IsOrthographic = !IsOrthographic;
+            BlendToMatrix(IsOrthographic ? _orthographic : _perspective, duration, ease, reverse);
         }
-        
+
         private static Matrix4x4 MatrixLerp(Matrix4x4 from, Matrix4x4 to, float time)
         {
             var ret = new Matrix4x4();
