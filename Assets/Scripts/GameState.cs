@@ -20,6 +20,8 @@ namespace CluckAndCollect
             var currentState = GameManager.Instance.CurrentState == this;
             uI.alpha = currentState ? 1 : 0;
             uI.interactable = currentState;
+            uI.blocksRaycasts = currentState;
+
         }
 
         private void StartSwitchState(GameState state)
@@ -31,6 +33,7 @@ namespace CluckAndCollect
             
             StartCoroutine(Fade(uI.alpha, 0));
             uI.interactable = false;
+            uI.blocksRaycasts = false;
         }
 
         private void FinishSwitchState()
@@ -42,6 +45,7 @@ namespace CluckAndCollect
             
             StartCoroutine(Fade(uI.alpha, 1));
             uI.interactable = true;
+            uI.blocksRaycasts = true;
         }
 
         private IEnumerator Fade(float start, float end)
