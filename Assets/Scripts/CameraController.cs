@@ -22,6 +22,8 @@ namespace CluckAndCollect
         private void Start()
         {
             GameManager.Instance.EventManager.onStartSwitchState.AddListener(StateSwitch);
+            var start = GameManager.Instance.CurrentState.transform;
+            _transform.SetPositionAndRotation(start.position, start.rotation);
         }
 
         private void StateSwitch(GameState state)
