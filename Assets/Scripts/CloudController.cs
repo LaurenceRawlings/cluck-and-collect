@@ -31,7 +31,7 @@ namespace CluckAndCollect
         {
             InvokeRepeating(nameof(SpawnCloud), 0, wait);
 
-            _zBounds = new Vector2(0, 300);
+            _zBounds = new Vector2(0, target.transform.position.z);
             for (var i = 0; i < 100; i++)
             {
                 SpawnCloud();

@@ -8,7 +8,9 @@ namespace CluckAndCollect
     {
         [field: SerializeField] public bool OrthographicView { get; private set; }
         [field: SerializeField] public GameStates State { get; private set; }
-        
+        [field: SerializeField] public float CameraTransitionDuration { get; private set; }
+        [field: SerializeField] public GameState BackState { get; private set; }
+
         [SerializeField] private CanvasGroup uI;
         [SerializeField] private float uIFadeDuration;
 
@@ -29,7 +31,7 @@ namespace CluckAndCollect
             {
                 return;
             }
-            
+
             StartCoroutine(Fade(uI.alpha, 0));
             uI.interactable = false;
             uI.blocksRaycasts = false;
@@ -41,7 +43,7 @@ namespace CluckAndCollect
             {
                 return;
             }
-            
+
             StartCoroutine(Fade(uI.alpha, 1));
             uI.interactable = true;
             uI.blocksRaycasts = true;
@@ -69,6 +71,7 @@ namespace CluckAndCollect
         Leaderboard,
         About,
         Play,
-        Replay
+        Replay,
+        Pause
     }
 }

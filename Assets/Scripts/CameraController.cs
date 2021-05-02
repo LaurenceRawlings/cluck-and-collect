@@ -7,7 +7,6 @@ namespace CluckAndCollect
     [RequireComponent(typeof(PerspectiveSwitcher))]
     public class CameraController : MonoBehaviour
     {
-        [SerializeField] private float transitionDuration;
         [SerializeField] private float transitionEase;
 
         private Transform _transform;
@@ -29,15 +28,16 @@ namespace CluckAndCollect
         private void StateSwitch(GameState state)
         {
             var target = state.transform;
+            var duration = state.CameraTransitionDuration;
 
             if ((state.OrthographicView && !_perspectiveSwitcher.IsOrthographic) ||
                 (!state.OrthographicView && _perspectiveSwitcher.IsOrthographic))
             {
-                _perspectiveSwitcher.Switch(transitionDuration, transitionEase, false);
+                _perspectiveSwitcher.Switch(duration, transitionEase, false);
             }
 
-            _transform.DOMove(target.position, transitionDuration);
-            _transform.DORotate(target.rotation.eulerAngles, transitionDuration)
+            _transform.DOMove(target.position, duration);
+            _transform.DORotate(target.rotation.eulerAngles, duration)
                 .OnComplete(GameManager.Instance.EventManager.onFinishSwitchState.Invoke);
         }
     }
