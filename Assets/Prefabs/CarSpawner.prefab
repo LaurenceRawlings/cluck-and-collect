@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6313974088624424813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6313974088624424812}
+  - component: {fileID: 6313974088624424083}
+  m_Layer: 0
+  m_Name: CarSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6313974088624424812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313974088624424813}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6313974089480426519}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &6313974088624424083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313974088624424813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2aea564a944beb91b01b0c53896d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedBounds: {x: 5, y: 10}
+  intervalBounds: {x: 1, y: 4}
+  target: {fileID: 6313974089480426519}
+  prefabs:
+  - <Prefab>k__BackingField: {fileID: 4654262766701249805, guid: a47b94ee17c9f234dacba49534e35297, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 3643340017937934929, guid: 658dbf73c5af2c54db1f152c762b8d78, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 8917200160619715276, guid: 222c54686b25dc149abde37d6dea18e3, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 7769101124932070394, guid: 763503ab875a3df4d8dfe7f159b196d2, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 2123541507196260300, guid: 11d0b0218fc845443b8e1d722b610502, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 1491899653889685642, guid: 8f7bac79ec952724ea9a1af303b98dbf, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 7930603527737493130, guid: 667f14deef0a7b64ea607e12462434c4, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 4530909750646864331, guid: 7a7ba72ad053de140b43d117b325939e, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 7954631518439184012, guid: f0ad9df6631dc3940b472cff9c1e280a, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 833906243180328308, guid: b8ddcbc55e22d6146a56a1571fe2b2ae, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 4276965498218073577, guid: fcee574e56e178b4cb084dd3ad79c4c4, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 3341832527416597203, guid: 4294019a39198bd46a2d4867798a08d8, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 764127944917916312, guid: 991819c5d3c96d744b11c77af3d679fb, type: 3}
+    <Weighting>k__BackingField: 1
+  - <Prefab>k__BackingField: {fileID: 5785713906691390858, guid: bb2dae9825fd017429e722810d9765c8, type: 3}
+    <Weighting>k__BackingField: 1
+--- !u!1 &6313974089480426512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6313974089480426519}
+  m_Layer: 0
+  m_Name: Target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6313974089480426519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313974089480426512}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 40}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6313974088624424812}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
