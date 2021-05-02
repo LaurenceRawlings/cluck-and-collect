@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace CluckAndCollect
@@ -10,6 +9,6 @@ namespace CluckAndCollect
         [SerializeField] public UnityEvent onFinishSwitchState;
         [SerializeField] public UnityEvent onStartGame;
         [SerializeField] public UnityEvent onEndGame;
-
+        [SerializeField] public UnityEvent<Vector3> onMoveCommand;
     }
 }

@@ -11,6 +11,7 @@ namespace CluckAndCollect
         public static GameManager Instance { get; private set; }
         public EventManager EventManager { get; private set; }
         public GameState CurrentState { get; private set; }
+        public float GridSize { get; private set; }
 
         [SerializeField] private GameState startState;
 
@@ -24,7 +25,7 @@ namespace CluckAndCollect
             {
                 Instance = this;
             }
-            
+
             EventManager = GetComponent<EventManager>();
             CurrentState = startState;
         }
