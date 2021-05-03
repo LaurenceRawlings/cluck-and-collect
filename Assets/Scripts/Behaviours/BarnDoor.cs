@@ -19,24 +19,18 @@ namespace CluckAndCollect
 
         private void Start()
         {
-            GameManager.Instance.EventManager.onStartSwitchState.AddListener(Open);
-            GameManager.Instance.EventManager.onFinishSwitchState.AddListener(Close);
+            Profiles.OnEnter.AddListener(Open);
+            Profiles.OnExit.AddListener(Close);
         }
 
-        private void Open(GameState state)
+        private void Open()
         {
-            if (state.State == GameStates.Profiles)
-            {
-                _transform.DOMove(openPosition.position, duration);
-            }
+            _transform.DOMove(openPosition.position, duration);
         }
 
         private void Close()
         {
-            if (GameManager.Instance.CurrentState.State == GameStates.Menu)
-            {
-                _transform.DOMove(closedPosition.position, duration);
-            }
+            _transform.DOMove(closedPosition.position, duration);
         }
     }
 }

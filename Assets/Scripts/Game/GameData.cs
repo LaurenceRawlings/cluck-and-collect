@@ -4,13 +4,13 @@ using Random = UnityEngine.Random;
 
 namespace CluckAndCollect
 {
-    public struct Game
+    public struct GameData
     {
         public int Seed { get; }
         public int Score { get; set; }
         public List<MoveCommand> Commands { get; }
 
-        public Game(int seed = 0)
+        public GameData(int seed = 0)
         {
             Seed = seed == 0 ? DateTime.Now.Millisecond : seed;
             Score = 0;

@@ -24,12 +24,7 @@ namespace CluckAndCollect
         {
             _gameManager = GameManager.Instance;
             _transform = transform;
-            _gameManager.EventManager.onStartGame.AddListener(Restart);
-            _reverse = Random.value >= 0.5f;
-            _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
-            _time = Vector3.Distance(_transform.position, target.position) / Random.Range(speedBounds.x, speedBounds.y);
-            prefabs.Sort();
-            ResetInterval();
+            Restart();
         }
 
         private void Update()
@@ -42,10 +37,16 @@ namespace CluckAndCollect
 
         private void Restart()
         {
-            foreach (Transform child in _transform)
+            for (var i = 1; i < _transform.childCount; i++)
             {
-                Destroy(child.gameObject);
+                Destroy(_transform.GetChild(i).gameObject);
             }
+            
+            _reverse = Random.value >= 0.5f;
+            _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
+            _time = Vector3.Distance(_transform.position, target.position) / Random.Range(speedBounds.x, speedBounds.y);
+            prefabs.Sort();
+            ResetInterval();
         }
 
         private void ResetInterval()
@@ -57,7 +58,7 @@ namespace CluckAndCollect
         {
             var randomWeight = Random.Range(0, _totalWeights);
             var selected = prefabs.Last().Prefab;
-            
+
             foreach (var spawn in prefabs)
             {
                 if (randomWeight < spawn.Weighting)
@@ -65,23 +66,19 @@ namespace CluckAndCollect
                     selected = spawn.Prefab;
                     break;
                 }
+
                 randomWeight -= spawn.Weighting;
             }
-            
+
             return selected;
         }
 
         private void Spawn()
         {
-            var startPosition = _transform.position;
-            var endPosition = target.position;
-
-            var spawned = Instantiate(GetRandomPrefab(),
-                _reverse ? endPosition : startPosition,
-                _reverse ? target.rotation : _transform.rotation, _transform);
-
-            spawned.transform.DOMove(_reverse ? startPosition : endPosition, _time).SetEase(Ease.Linear)
-                .OnComplete(() => Destroy(spawned));
+            var spawnCommand = new SpawnCommand(GetRandomPrefab(), _reverse ? target : _transform,
+                _reverse ? _transform : target, _time, Time.time);
+            
+            spawnCommand.Execute();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace CluckAndCollect
         [SerializeField] private float near = .3f;
         [SerializeField] private float far = 1000f;
         [SerializeField] private float orthographicSize = 10f;
+        [SerializeField] private float ease;
 
         private Matrix4x4 _orthographic;
         private Matrix4x4 _perspective;
@@ -29,7 +30,7 @@ namespace CluckAndCollect
             IsOrthographic = false;
         }
 
-        public void Switch(float duration, float ease, bool reverse)
+        public void Switch(float duration, bool reverse)
         {
             IsOrthographic = !IsOrthographic;
             BlendToMatrix(IsOrthographic ? _orthographic : _perspective, duration, ease, reverse);

@@ -1163,8 +1163,6 @@ GameObject:
   - component: {fileID: 14048210}
   - component: {fileID: 14048209}
   - component: {fileID: 14048208}
-  - component: {fileID: 14048212}
-  - component: {fileID: 14048211}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1219,45 +1217,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &14048211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14048207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f11444b3798e49caaac040929e348347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &14048212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14048207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16a764ed06804d048a7762cb80e566ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onStartSwitchState:
-    m_PersistentCalls:
-      m_Calls: []
-  onFinishSwitchState:
-    m_PersistentCalls:
-      m_Calls: []
-  onStartGame:
-    m_PersistentCalls:
-      m_Calls: []
-  onEndGame:
-    m_PersistentCalls:
-      m_Calls: []
-  onMoveCommand:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &18217660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f4d5439ba3d67974e842aa1b542c5325, type: 3}
@@ -5213,7 +5172,7 @@ GameObject:
   - component: {fileID: 162274069}
   - component: {fileID: 162274068}
   m_Layer: 0
-  m_Name: Quit
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6120,15 +6079,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 193857338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: f03e628ab2c0455b8822587c42398bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 0
-  <State>k__BackingField: 1
   <CameraTransitionDuration>k__BackingField: 2
-  <BackState>k__BackingField: {fileID: 2108503739}
-  uI: {fileID: 2013568597}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 2013568597}
+  backState: {fileID: 2108503739}
 --- !u!4 &194685106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 211598a0679915849b45bf6ef3ad59be, type: 3}
@@ -9773,15 +9731,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 311224545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: 52ba9ee8a4f948e41bdc6f188fb7128a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 1
-  <State>k__BackingField: 5
   <CameraTransitionDuration>k__BackingField: 3
-  <BackState>k__BackingField: {fileID: 948221044}
-  uI: {fileID: 877222469}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 877222469}
+  backState: {fileID: 948221044}
 --- !u!1001 &312328272
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12706,15 +12663,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 407338952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: 630b0c60596b4af458e53362c564303d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 0
-  <State>k__BackingField: 2
   <CameraTransitionDuration>k__BackingField: 2
-  <BackState>k__BackingField: {fileID: 2108503739}
-  uI: {fileID: 1848810259}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 1848810259}
+  backState: {fileID: 2108503739}
 --- !u!1001 &409401857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13872,9 +13828,8 @@ GameObject:
   - component: {fileID: 438251950}
   - component: {fileID: 438251949}
   - component: {fileID: 438251948}
-  - component: {fileID: 438251947}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13899,19 +13854,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &438251947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 438251945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &438251948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13956,13 +13898,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 2108503739}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14018,9 +13960,8 @@ GameObject:
   - component: {fileID: 439025345}
   - component: {fileID: 439025344}
   - component: {fileID: 439025343}
-  - component: {fileID: 439025342}
   m_Layer: 0
-  m_Name: Resume
+  m_Name: ResumeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14045,19 +13986,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &439025342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439025340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &439025343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14102,13 +14030,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 311224547}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15695,9 +15623,8 @@ GameObject:
   - component: {fileID: 495928132}
   - component: {fileID: 495928131}
   - component: {fileID: 495928130}
-  - component: {fileID: 495928129}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15722,19 +15649,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &495928129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495928127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &495928130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15779,13 +15693,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 2108503739}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18215,9 +18129,8 @@ GameObject:
   - component: {fileID: 579032195}
   - component: {fileID: 579032194}
   - component: {fileID: 579032193}
-  - component: {fileID: 579032192}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18242,19 +18155,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &579032192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 579032190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &579032193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18299,13 +18199,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 2108503739}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19088,15 +18988,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 601877038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c446041c1ef5074eb07a95b1eedfdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 0
-  <State>k__BackingField: 3
   <CameraTransitionDuration>k__BackingField: 3
-  <BackState>k__BackingField: {fileID: 2108503739}
-  uI: {fileID: 650934228}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 650934228}
+  backState: {fileID: 2108503739}
 --- !u!1 &602151025
 GameObject:
   m_ObjectHideFlags: 0
@@ -26142,7 +26041,6 @@ GameObject:
   - component: {fileID: 838823293}
   - component: {fileID: 838823292}
   - component: {fileID: 838823291}
-  - component: {fileID: 838823294}
   m_Layer: 0
   m_Name: LeaderboardsButton
   m_TagString: Untagged
@@ -26213,13 +26111,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 601877040}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26263,19 +26161,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 838823289}
   m_CullTransparentMesh: 1
---- !u!114 &838823294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 838823289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 601877040}
 --- !u!1 &841376620
 GameObject:
   m_ObjectHideFlags: 0
@@ -26393,7 +26278,6 @@ GameObject:
   - component: {fileID: 848948264}
   - component: {fileID: 848948263}
   - component: {fileID: 848948262}
-  - component: {fileID: 848948265}
   m_Layer: 0
   m_Name: ProfilesButton
   m_TagString: Untagged
@@ -26463,7 +26347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 848948263}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 193857340}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &848948263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26502,19 +26398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848948260}
   m_CullTransparentMesh: 1
---- !u!114 &848948265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848948260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 193857340}
 --- !u!1001 &850202817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29440,15 +29323,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 948221042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: 13ba817255b4b8b43864d1247dccffdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 1
-  <State>k__BackingField: 7
   <CameraTransitionDuration>k__BackingField: 0
-  <BackState>k__BackingField: {fileID: 311224547}
-  uI: {fileID: 830535008}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 830535008}
+  backState: {fileID: 311224547}
 --- !u!4 &949238416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 211598a0679915849b45bf6ef3ad59be, type: 3}
@@ -30110,7 +29992,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd9e84cd4b24794a419808ddda3c185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionEase: 0.05
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30127,6 +30008,7 @@ MonoBehaviour:
   near: 0.3
   far: 1000
   orthographicSize: 11
+  ease: 0.05
 --- !u!1001 &963902528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40510,9 +40392,8 @@ GameObject:
   - component: {fileID: 1271983751}
   - component: {fileID: 1271983750}
   - component: {fileID: 1271983749}
-  - component: {fileID: 1271983748}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40537,19 +40418,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1271983748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271983746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &1271983749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40594,13 +40462,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 2108503739}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -42187,9 +42055,8 @@ GameObject:
   - component: {fileID: 1340219310}
   - component: {fileID: 1340219309}
   - component: {fileID: 1340219308}
-  - component: {fileID: 1340219307}
   m_Layer: 0
-  m_Name: Restart
+  m_Name: RestartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42214,19 +42081,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1340219307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340219305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &1340219308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48375,7 +48229,6 @@ GameObject:
   - component: {fileID: 1521530328}
   - component: {fileID: 1521530327}
   - component: {fileID: 1521530326}
-  - component: {fileID: 1521530329}
   m_Layer: 0
   m_Name: PlayButton
   m_TagString: Untagged
@@ -48445,7 +48298,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1521530327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 311224547}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1521530327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48484,19 +48349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521530324}
   m_CullTransparentMesh: 1
---- !u!114 &1521530329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521530324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 311224547}
 --- !u!4 &1522472729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 41bc1f71e7a4b0b41bc294d9d83bd22d, type: 3}
@@ -51746,7 +51598,6 @@ GameObject:
   - component: {fileID: 1641569125}
   - component: {fileID: 1641569124}
   - component: {fileID: 1641569123}
-  - component: {fileID: 1641569126}
   m_Layer: 0
   m_Name: AboutButton
   m_TagString: Untagged
@@ -51816,7 +51667,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1641569124}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2067277834}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1641569124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51855,19 +51718,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1641569121}
   m_CullTransparentMesh: 1
---- !u!114 &1641569126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641569121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2067277834}
 --- !u!4 &1644376005 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 211598a0679915849b45bf6ef3ad59be, type: 3}
@@ -54766,9 +54616,8 @@ GameObject:
   - component: {fileID: 1730626117}
   - component: {fileID: 1730626116}
   - component: {fileID: 1730626115}
-  - component: {fileID: 1730626114}
   m_Layer: 0
-  m_Name: Back
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54793,19 +54642,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1730626114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1730626112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 2108503739}
 --- !u!114 &1730626115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54850,13 +54686,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 2108503739}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -62246,7 +62082,6 @@ GameObject:
   - component: {fileID: 1962351730}
   - component: {fileID: 1962351729}
   - component: {fileID: 1962351728}
-  - component: {fileID: 1962351731}
   m_Layer: 0
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -62316,7 +62151,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1962351729}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 407338954}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1962351729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62355,19 +62202,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962351726}
   m_CullTransparentMesh: 1
---- !u!114 &1962351731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962351726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 407338954}
 --- !u!1001 &1963363944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63072,7 +62906,6 @@ GameObject:
   - component: {fileID: 1992155026}
   - component: {fileID: 1992155025}
   - component: {fileID: 1992155024}
-  - component: {fileID: 1992155027}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -63128,33 +62961,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1992155027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992155023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16a764ed06804d048a7762cb80e566ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onStartSwitchState:
-    m_PersistentCalls:
-      m_Calls: []
-  onFinishSwitchState:
-    m_PersistentCalls:
-      m_Calls: []
-  onStartGame:
-    m_PersistentCalls:
-      m_Calls: []
-  onEndGame:
-    m_PersistentCalls:
-      m_Calls: []
-  onMoveCommand:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1992800367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65809,15 +65615,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2067277832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: f636550a5e5eeb549b453d6f99345207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 0
-  <State>k__BackingField: 4
   <CameraTransitionDuration>k__BackingField: 2
-  <BackState>k__BackingField: {fileID: 2108503739}
-  uI: {fileID: 602151027}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 602151027}
+  backState: {fileID: 2108503739}
 --- !u!1001 &2069825941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66773,9 +66578,8 @@ GameObject:
   - component: {fileID: 2095612108}
   - component: {fileID: 2095612107}
   - component: {fileID: 2095612106}
-  - component: {fileID: 2095612105}
   m_Layer: 0
-  m_Name: Pause
+  m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66800,19 +66604,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2095612105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2095612103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5205032b99fc4e6fbbdf7db70d1c165f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 948221044}
 --- !u!114 &2095612106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66857,13 +66648,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 14048207}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 14048209}
+        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_MethodName: ChangeState
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 948221044}
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -67422,15 +67213,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2108503737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4849781849e543be89fe8bcf5a79f648, type: 3}
+  m_Script: {fileID: 11500000, guid: 33bff5747b304cb287f90da2510e92f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <OrthographicView>k__BackingField: 0
-  <State>k__BackingField: 0
   <CameraTransitionDuration>k__BackingField: 3
-  <BackState>k__BackingField: {fileID: 0}
-  uI: {fileID: 1192974884}
-  uIFadeDuration: 1
+  <UIFadeDuration>k__BackingField: 0.2
+  <CanvasGroup>k__BackingField: {fileID: 1192974884}
+  backState: {fileID: 0}
 --- !u!4 &2108653249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f4d5439ba3d67974e842aa1b542c5325, type: 3}
