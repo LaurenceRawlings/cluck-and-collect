@@ -1,7 +1,9 @@
+using CluckAndCollect.Behaviours;
+using CluckAndCollect.Game.States;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game
 {
     [RequireComponent(typeof(ChickenQueue))]
     public class GameManager : MonoBehaviour
@@ -11,6 +13,7 @@ namespace CluckAndCollect
 
         [field: SerializeField] public float GridSize { get; private set; }
         [field: SerializeField] public LayerMask GridLayer { get; private set; }
+        [field: SerializeField] public LayerMask WallLayer { get; private set; }
         [field: SerializeField] public float MoveDuration { get; private set; }
         [field: SerializeField] public float MoveDelay { get; private set; }
         public GameState CurrentState { get; private set; }

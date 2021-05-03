@@ -1190,6 +1190,7 @@ MonoBehaviour:
   queueExitPosition: {fileID: 2038850392}
   queueEntryPosition: {fileID: 1261763626}
   chickenPrefab: {fileID: 570817635135686782, guid: e3ffc8ee33e5c8345a4beb9b3232bf10, type: 3}
+  lives: 0
 --- !u!114 &14048209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1206,6 +1207,9 @@ MonoBehaviour:
   <GridLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
+  <WallLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
   <MoveDuration>k__BackingField: 0.2
   <MoveDelay>k__BackingField: 0.1
   startState: {fileID: 2108503739}
@@ -2226,6 +2230,10 @@ PrefabInstance:
     - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
       propertyPath: m_Name
       value: Wall_30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
@@ -10535,68 +10543,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4939479de466a842b41495a7e8ce8b9, type: 3}
---- !u!1001 &345798561
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2099775614}
-    m_Modifications:
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_RootOrder
-      value: 106
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2286845605359469935, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_Name
-      value: GridSquare_107
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
---- !u!4 &345798562 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-  m_PrefabInstance: {fileID: 345798561}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &345988223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13917,12 +13863,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2108503739}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14049,12 +13996,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 311224547}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15712,12 +15660,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2108503739}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17167,6 +17116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_10
       objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
 --- !u!4 &551293652 stripped
@@ -18218,12 +18171,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2108503739}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -21687,6 +21641,10 @@ PrefabInstance:
     - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
       propertyPath: m_Name
       value: Wall_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
@@ -26130,12 +26088,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 601877040}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26367,12 +26326,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 193857340}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -31867,6 +31827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_9
       objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
 --- !u!4 &1021332230 stripped
@@ -33039,6 +33003,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_32
       objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
 --- !u!4 &1065667531 stripped
@@ -33555,68 +33523,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51151224a9a0d2e4b9626956a71e244b, type: 3}
---- !u!1001 &1086328546
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2099775614}
-    m_Modifications:
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_RootOrder
-      value: 108
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2286845605359469935, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_Name
-      value: GridSquare_109
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
---- !u!4 &1086328547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-  m_PrefabInstance: {fileID: 1086328546}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1088900068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34123,6 +34029,10 @@ PrefabInstance:
     - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
       propertyPath: m_Name
       value: Wall_33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
@@ -40481,12 +40391,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2108503739}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -43181,68 +43092,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec2cb7bf3c7e72349bc974e7ccadfcca, type: 3}
---- !u!1001 &1375722881
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2099775614}
-    m_Modifications:
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_RootOrder
-      value: 105
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -12
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2286845605359469935, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_Name
-      value: GridSquare_106
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
---- !u!4 &1375722882 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-  m_PrefabInstance: {fileID: 1375722881}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1378225117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43935,68 +43784,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ec6048517d0ac54caba52cf2401518c, type: 3}
---- !u!1001 &1397031362
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2099775614}
-    m_Modifications:
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_RootOrder
-      value: 107
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2286845605359469935, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-      propertyPath: m_Name
-      value: GridSquare_108
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
---- !u!4 &1397031363 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 644888533650211874, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
-  m_PrefabInstance: {fileID: 1397031362}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1397099640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48318,12 +48105,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 311224547}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -50967,6 +50755,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_31
       objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
 --- !u!4 &1607346089 stripped
@@ -51449,7 +51241,7 @@ GameObject:
   - component: {fileID: 1631567153}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -51687,12 +51479,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2067277834}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -54705,12 +54498,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2108503739}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -57107,6 +56901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_34
       objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
 --- !u!4 &1790630729 stripped
@@ -58383,6 +58181,8 @@ GameObject:
   - component: {fileID: 1834450587}
   - component: {fileID: 1834450590}
   - component: {fileID: 1834450589}
+  - component: {fileID: 1834450591}
+  - component: {fileID: 1834450592}
   - component: {fileID: 1834450588}
   m_Layer: 0
   m_Name: River
@@ -58407,20 +58207,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1834450588
-MeshCollider:
+--- !u!65 &1834450588
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834450586}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 2
+  m_Size: {x: 4.9545994, y: 2.220446e-16, z: 9.478437}
+  m_Center: {x: -0.000021775564, y: 0, z: -0.05756092}
 --- !u!23 &1834450589
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -58470,6 +58269,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834450586}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1834450591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834450586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11961439736c4442ba9977c4c7224515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splash: {fileID: 3043974516770848632, guid: e7de8d98823d9e7469de0e7fe667b089, type: 3}
+--- !u!54 &1834450592
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834450586}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &1835203544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e4387aea07a151a4fa1867e45ca178ab, type: 3}
@@ -59493,6 +59321,10 @@ PrefabInstance:
     - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
       propertyPath: m_Name
       value: Wall_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
@@ -62171,12 +62003,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 407338954}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -66229,6 +66062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall_11
       objectReference: {fileID: 0}
+    - target: {fileID: 6068473376291800836, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13044dfdf7eb84d4bb88e78e7bf5008e, type: 3}
 --- !u!4 &2085501977 stripped
@@ -66667,12 +66504,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14048209}
-        m_TargetAssemblyTypeName: CluckAndCollect.GameManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: CluckAndCollect.Game.GameManager, Assembly-CSharp
         m_MethodName: ChangeState
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 948221044}
-          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.GameState, Assembly-CSharp
+          m_ObjectArgumentAssemblyTypeName: CluckAndCollect.Game.States.GameState,
+            Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -67055,10 +66893,6 @@ Transform:
   - {fileID: 1661755865}
   - {fileID: 944585275}
   - {fileID: 852652760}
-  - {fileID: 1375722882}
-  - {fileID: 345798562}
-  - {fileID: 1397031363}
-  - {fileID: 1086328547}
   - {fileID: 550582455}
   - {fileID: 8652906043397224472}
   - {fileID: 1791763407}

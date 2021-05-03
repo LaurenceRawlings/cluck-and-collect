@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using CluckAndCollect.Game.Commands;
 using Random = UnityEngine.Random;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game
 {
     public struct GameData
     {

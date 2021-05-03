@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game.Commands
 {
     public class SpawnCommand : ICommand
     {

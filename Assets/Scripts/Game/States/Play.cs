@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using CluckAndCollect.Game.Commands;
+using UnityEngine;
 using UnityEngine.Events;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game.States
 {
     public class Play : GameState
     {
         public static readonly UnityEvent OnEnter = new UnityEvent();
         public static readonly UnityEvent OnExit = new UnityEvent();
+        public static readonly UnityEvent OnDeath = new UnityEvent();
 
         private bool ready;
 

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using CluckAndCollect.Game;
+using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Behaviours
 {
     [RequireComponent(typeof(PerspectiveSwitcher))]
     public class CameraController : MonoBehaviour

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game.States
 {
     public abstract class GameState : MonoBehaviour
     {

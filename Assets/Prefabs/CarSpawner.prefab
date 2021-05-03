@@ -60,8 +60,6 @@ MonoBehaviour:
     <Weighting>k__BackingField: 1
   - <Prefab>k__BackingField: {fileID: 1491899653889685642, guid: 8f7bac79ec952724ea9a1af303b98dbf, type: 3}
     <Weighting>k__BackingField: 1
-  - <Prefab>k__BackingField: {fileID: 7930603527737493130, guid: 667f14deef0a7b64ea607e12462434c4, type: 3}
-    <Weighting>k__BackingField: 1
   - <Prefab>k__BackingField: {fileID: 4530909750646864331, guid: 7a7ba72ad053de140b43d117b325939e, type: 3}
     <Weighting>k__BackingField: 1
   - <Prefab>k__BackingField: {fileID: 7954631518439184012, guid: f0ad9df6631dc3940b472cff9c1e280a, type: 3}

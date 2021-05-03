@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game
 {
     [Serializable]
     public struct SpawnItem : IComparable<SpawnItem>

@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Behaviours
 {
     [RequireComponent(typeof(Camera))]
     public class PerspectiveSwitcher : MonoBehaviour

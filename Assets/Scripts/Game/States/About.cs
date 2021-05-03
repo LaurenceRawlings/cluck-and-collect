@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Game.States
 {
     public class About : GameState
     {

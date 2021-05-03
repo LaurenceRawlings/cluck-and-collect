@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Behaviours
 {
     public class ChickenQueue : MonoBehaviour
     {
@@ -12,11 +13,20 @@ namespace CluckAndCollect
         [SerializeField] private Transform queueExitPosition;
         [SerializeField] private Transform queueEntryPosition;
         [SerializeField] private GameObject chickenPrefab;
+        [SerializeField] private int lives;
         
         private Queue<GameObject> _chickenQueue = new Queue<GameObject>();
+        private int _currentLives;
+
+        private void Start()
+        {
+            Play.OnDeath.AddListener(NewChicken);
+        }
 
         private void OnEnable()
         {
+            _currentLives = lives;
+            
             foreach (var queuePosition in queuePositions)
             {
                 _chickenQueue.Enqueue(Instantiate(chickenPrefab, queuePosition.position, queuePosition.rotation));

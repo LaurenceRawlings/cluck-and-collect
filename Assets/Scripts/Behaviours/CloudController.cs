@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Behaviours
 {
     public class CloudController : MonoBehaviour
     {

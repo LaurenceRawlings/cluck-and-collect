@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DG.Tweening;
+using CluckAndCollect.Game;
+using CluckAndCollect.Game.Commands;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Behaviours
 {
     public class Spawner : MonoBehaviour
     {
@@ -44,7 +45,7 @@ namespace CluckAndCollect
             
             _reverse = Random.value >= 0.5f;
             _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
-            _time = Vector3.Distance(_transform.position, target.position) / Random.Range(speedBounds.x, speedBounds.y);
+            _time = Vector3.Distance(_transform.position, target.position) / Mathf.Ceil(Random.Range(speedBounds.x, speedBounds.y));
             prefabs.Sort();
             ResetInterval();
         }

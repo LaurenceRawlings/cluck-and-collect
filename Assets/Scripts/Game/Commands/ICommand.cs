@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace CluckAndCollect
+﻿namespace CluckAndCollect.Game.Commands
 {
     public interface ICommand
     {

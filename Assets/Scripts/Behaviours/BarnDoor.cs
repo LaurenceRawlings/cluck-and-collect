@@ -1,8 +1,8 @@
-﻿using System;
+﻿using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
 
-namespace CluckAndCollect
+namespace CluckAndCollect.Behaviours
 {
     public class BarnDoor : MonoBehaviour
     {
