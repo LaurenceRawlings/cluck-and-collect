@@ -50,7 +50,7 @@ namespace CluckAndCollect
             {
                 return;
             }
-            
+
             var newState = CurrentState.Tick();
 
             if (newState != null)
@@ -76,6 +76,15 @@ namespace CluckAndCollect
         private void NewGame()
         {
             CurrentGameData = new GameData();
+        }
+
+        public void Quit()
+        {
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
         }
     }
 }

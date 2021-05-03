@@ -14,7 +14,7 @@ namespace CluckAndCollect
         
         public abstract void Enter();
 
-        public GameState Tick()
+        public virtual GameState Tick()
         {
             return Input.GetButtonDown("Cancel") ? backState : null;
         }

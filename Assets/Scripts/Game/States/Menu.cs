@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace CluckAndCollect
 {
@@ -10,6 +11,16 @@ namespace CluckAndCollect
         public override void Enter()
         {
             OnEnter.Invoke();
+        }
+
+        public override GameState Tick()
+        {
+            if (Input.GetButtonDown("Cancel"))
+            {
+                GameManager.Instance.Quit();
+            }
+
+            return null;
         }
 
         public override void Exit()
