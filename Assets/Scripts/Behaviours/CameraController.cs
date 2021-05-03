@@ -8,7 +8,7 @@ namespace CluckAndCollect
     [RequireComponent(typeof(PerspectiveSwitcher))]
     public class CameraController : MonoBehaviour
     {
-        public static UnityEvent OnFinishTransition = new UnityEvent();
+        public static readonly UnityEvent OnFinishTransition = new UnityEvent();
         
         private Transform _transform;
         private PerspectiveSwitcher _perspectiveSwitcher;

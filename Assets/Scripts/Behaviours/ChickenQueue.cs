@@ -4,14 +4,15 @@ using UnityEngine;
 
 namespace CluckAndCollect
 {
-    public class ChickenController : MonoBehaviour
+    public class ChickenQueue : MonoBehaviour
     {
+        public GameObject ActiveChicken { get; private set; }
+        
         [SerializeField] private Transform[] queuePositions;
         [SerializeField] private Transform queueExitPosition;
         [SerializeField] private Transform queueEntryPosition;
         [SerializeField] private GameObject chickenPrefab;
-
-        private GameObject _activeChicken;
+        
         private Queue<GameObject> _chickenQueue = new Queue<GameObject>();
 
         private void OnEnable()
@@ -41,7 +42,7 @@ namespace CluckAndCollect
                 sequence.AppendInterval(0.1f);
             }
 
-            _activeChicken = nextChicken;
+            ActiveChicken = nextChicken;
         }
     }
 }

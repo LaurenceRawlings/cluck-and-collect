@@ -3,16 +3,21 @@ using UnityEngine.Events;
 
 namespace CluckAndCollect
 {
-    [RequireComponent(typeof(ChickenController))]
+    [RequireComponent(typeof(ChickenQueue))]
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
         public static readonly UnityEvent<GameState> OnStateChange = new UnityEvent<GameState>();
+
+        [field: SerializeField] public float GridSize { get; private set; }
+        [field: SerializeField] public LayerMask GridLayer { get; private set; }
+        [field: SerializeField] public float MoveDuration { get; private set; }
+        [field: SerializeField] public float MoveDelay { get; private set; }
         public GameState CurrentState { get; private set; }
+        public GameData CurrentGameData { get; private set; }
+        public ChickenQueue ChickenQueue { get; private set; }
 
         [SerializeField] private GameState startState;
-
-        public GameData CurrentGameData { get; private set; }
 
         private bool _ready;
 
@@ -28,6 +33,7 @@ namespace CluckAndCollect
             }
 
             CameraController.OnFinishTransition.AddListener(() => _ready = true);
+            ChickenQueue = GetComponent<ChickenQueue>();
         }
 
         private void Start()
@@ -80,11 +86,11 @@ namespace CluckAndCollect
 
         public void Quit()
         {
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
                 Application.Quit();
-            #endif
+#endif
         }
     }
 }
