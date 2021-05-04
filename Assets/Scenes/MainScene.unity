@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8ac86faba04a7f9558e863cc997389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathSound: {fileID: 8300000, guid: 162bb273e064e7343b8f341bf50d39c4, type: 3}
+  deathSound: {fileID: 0}
   jumpSounds:
   - {fileID: 8300000, guid: acdc4106fc598f24d9e5b4212933fb40, type: 3}
   - {fileID: 8300000, guid: d99d4244c0d31484bb0fdf514e0187e0, type: 3}
@@ -29906,6 +29906,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194231}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -30007,6 +30008,25 @@ MonoBehaviour:
   far: 1000
   orthographicSize: 11
   ease: 0.05
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8ac86faba04a7f9558e863cc997389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 9415b1094a459ff41b98714e31cc4f90, type: 3}
+  jumpSounds:
+  - {fileID: 8300000, guid: acdc4106fc598f24d9e5b4212933fb40, type: 3}
+  - {fileID: 8300000, guid: d99d4244c0d31484bb0fdf514e0187e0, type: 3}
+  backgroundSounds:
+  - {fileID: 8300000, guid: dc3c5ffd87786ac49bc3edf0786a43d8, type: 3}
+  - {fileID: 8300000, guid: 0de07d4ea672cfc4485da42581a4b804, type: 3}
 --- !u!1001 &963902528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58302,6 +58322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splash: {fileID: 3043974516770848632, guid: e7de8d98823d9e7469de0e7fe667b089, type: 3}
+  splashSound: {fileID: 8300000, guid: 9bba6b88673f79244bab55eecac17446, type: 3}
 --- !u!54 &1834450592
 Rigidbody:
   m_ObjectHideFlags: 0

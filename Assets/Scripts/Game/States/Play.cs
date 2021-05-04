@@ -11,17 +11,17 @@ namespace CluckAndCollect.Game.States
         public static readonly UnityEvent OnDeath = new UnityEvent();
         public static readonly UnityEvent OnMove = new UnityEvent();
 
-        private bool ready;
+        private bool _ready;
 
         public override void Enter()
         {
             OnEnter.Invoke();
-            ready = true;
+            _ready = true;
         }
 
         public override GameState Tick()
         {
-            if (!ready)
+            if (!_ready)
             {
                 return null;
             }
@@ -41,7 +41,7 @@ namespace CluckAndCollect.Game.States
 
             if (direction == Vector3.zero) return null;
 
-            ready = false;
+            _ready = false;
             var moveCommand = new MoveCommand(direction, GameManager.Instance.MoveDuration, Time.time);
             moveCommand.Execute();
             OnMove.Invoke();
@@ -61,7 +61,7 @@ namespace CluckAndCollect.Game.States
 
         private void Ready()
         {
-            ready = true;
+            _ready = true;
         }
     }
 }

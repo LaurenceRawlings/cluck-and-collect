@@ -59,6 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814bb26850194f9089bfa4b39e7aedc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSounds:
+  - {fileID: 8300000, guid: 094f0bbfc69c9c84883ae7acae2779de, type: 3}
+  - {fileID: 8300000, guid: 1aa185c4867d8bc49917ecca91cad9e2, type: 3}
 --- !u!54 &3802590594217644665
 Rigidbody:
   m_ObjectHideFlags: 0
