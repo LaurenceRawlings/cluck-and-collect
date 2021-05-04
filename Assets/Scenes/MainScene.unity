@@ -56813,10 +56813,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1631567152}
   - component: {fileID: 1631567154}
-  - component: {fileID: 1631567153}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Car
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -56835,17 +56834,6 @@ Transform:
   m_Father: {fileID: 976320893}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!154 &1631567153
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631567151}
-  m_Material: {fileID: 0}
-  m_Enabled: 1
-  m_TerrainData: {fileID: 15600000, guid: 24831cae8ab26a2439218780edbaab3e, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!218 &1631567154
 Terrain:
   m_ObjectHideFlags: 0

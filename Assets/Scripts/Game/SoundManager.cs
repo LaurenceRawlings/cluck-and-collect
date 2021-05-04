@@ -1,5 +1,4 @@
-﻿using System;
-using CluckAndCollect.Game.States;
+﻿using CluckAndCollect.Game.States;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -61,14 +60,14 @@ namespace CluckAndCollect.Game
             
             _death.volume = effectsVolume;
 
-            for (var i = 0; i < _jumps.Length; i++)
+            foreach (var source in _jumps)
             {
-                _jumps[i].volume = effectsVolume;
+                source.volume = effectsVolume;
             }
 
-            for (var i = 0; i < _backgrounds.Length; i++)
+            foreach (var source in _backgrounds)
             {
-                _backgrounds[i].volume = ambianceVolume;
+                source.volume = ambianceVolume;
             }
         }
     }
