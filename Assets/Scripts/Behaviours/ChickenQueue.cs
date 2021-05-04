@@ -2,19 +2,22 @@ using System.Collections.Generic;
 using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CluckAndCollect.Behaviours
 {
     public class ChickenQueue : MonoBehaviour
     {
+        public static readonly UnityEvent OnReady = new UnityEvent();
+
         public GameObject ActiveChicken { get; private set; }
-        
+
         [SerializeField] private Transform[] queuePositions;
         [SerializeField] private Transform queueExitPosition;
         [SerializeField] private Transform queueEntryPosition;
         [SerializeField] private GameObject chickenPrefab;
         [SerializeField] private int lives;
-        
+
         private Queue<GameObject> _chickenQueue = new Queue<GameObject>();
         private int _currentLives;
 
@@ -28,7 +31,7 @@ namespace CluckAndCollect.Behaviours
         private void OnEnable()
         {
             _currentLives = lives;
-            
+
             foreach (var queuePosition in queuePositions)
             {
                 _chickenQueue.Enqueue(Instantiate(chickenPrefab, queuePosition.position, queuePosition.rotation));
@@ -39,10 +42,14 @@ namespace CluckAndCollect.Behaviours
 
         private void NewChicken()
         {
-            var sequence = DOTween.Sequence();
+            var sequence = DOTween.Sequence().SetEase(Ease.Linear);
 
             var nextChicken = _chickenQueue.Dequeue();
-            sequence.Append(nextChicken.transform.DOJump(queueExitPosition.position, 1, 1, 0.5f));
+            var position = queueExitPosition.position;
+            
+            sequence.Append(nextChicken.transform.DOJump(position, 0.25f,
+                    (int) Mathf.Ceil(Vector3.Distance(nextChicken.transform.position, position)), 0.5f)
+                .OnComplete(() => OnReady.Invoke()));
             sequence.Join(nextChicken.transform.DOLocalRotate(Vector3.zero, 0.5f));
             _chickenQueue.Enqueue(Instantiate(chickenPrefab, queueEntryPosition.position, queueEntryPosition.rotation));
 

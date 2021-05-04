@@ -1,4 +1,5 @@
-﻿using CluckAndCollect.Game.Commands;
+﻿using CluckAndCollect.Behaviours;
+using CluckAndCollect.Game.Commands;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,17 +14,18 @@ namespace CluckAndCollect.Game.States
         public static readonly UnityEvent OnCollect = new UnityEvent();
         public static readonly UnityEvent OnNewLife = new UnityEvent();
 
-        private bool _ready;
+        private bool _moveReady;
+        private bool _queueReady;
 
         public override void Enter()
         {
             OnEnter.Invoke();
-            _ready = true;
+            _moveReady = true;
         }
 
         public override GameState Tick()
         {
-            if (!_ready)
+            if (!_moveReady || !_queueReady)
             {
                 return null;
             }
@@ -43,7 +45,7 @@ namespace CluckAndCollect.Game.States
 
             if (direction == Vector3.zero) return null;
 
-            _ready = false;
+            _moveReady = false;
             var moveCommand = new MoveCommand(direction, GameManager.Instance.MoveDuration, Time.time);
             moveCommand.Execute();
             OnMove.Invoke();
@@ -59,11 +61,13 @@ namespace CluckAndCollect.Game.States
         private void Start()
         {
             MoveCommand.OnFinishMove.AddListener(() => Invoke(nameof(Ready), GameManager.Instance.MoveDelay));
+            OnDeath.AddListener(() => _queueReady = false);
+            ChickenQueue.OnReady.AddListener(() => _queueReady = true);
         }
 
         private void Ready()
         {
-            _ready = true;
+            _moveReady = true;
         }
     }
 }
