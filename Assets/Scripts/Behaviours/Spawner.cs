@@ -13,6 +13,7 @@ namespace CluckAndCollect.Behaviours
         [SerializeField] private Vector2 intervalBounds;
         [SerializeField] private Transform target;
         [SerializeField] private List<SpawnItem> prefabs;
+        [SerializeField] private bool reversed;
 
         private float _interval;
         private float _totalWeights;
@@ -43,7 +44,8 @@ namespace CluckAndCollect.Behaviours
                 Destroy(_transform.GetChild(i).gameObject);
             }
             
-            _reverse = Random.value >= 0.5f;
+            // _reverse = Random.value >= 0.5f;
+            _reverse = reversed;
             _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
             _time = Vector3.Distance(_transform.position, target.position) / Mathf.Ceil(Random.Range(speedBounds.x, speedBounds.y));
             prefabs.Sort();

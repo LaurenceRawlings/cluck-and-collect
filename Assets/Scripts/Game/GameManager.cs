@@ -10,6 +10,7 @@ namespace CluckAndCollect.Game
     {
         public static GameManager Instance { get; private set; }
         public static readonly UnityEvent<GameState> OnStateChange = new UnityEvent<GameState>();
+        public static readonly UnityEvent<int> OnProfileChange = new UnityEvent<int>();
 
         [field: SerializeField] public float GridSize { get; private set; }
         [field: SerializeField] public LayerMask GridLayer { get; private set; }
@@ -23,6 +24,7 @@ namespace CluckAndCollect.Game
         [SerializeField] private GameState startState;
 
         private bool _ready;
+        private int _profile;
 
         private void Awake()
         {
@@ -46,6 +48,7 @@ namespace CluckAndCollect.Game
             CurrentState.CanvasGroup.alpha = 1;
             CurrentState.CanvasGroup.interactable = CurrentState.CanvasGroup.blocksRaycasts = true;
             _ready = true;
+            SwitchProfile(1);
         }
 
         private void Update()
@@ -94,6 +97,12 @@ namespace CluckAndCollect.Game
 #else
                 Application.Quit();
 #endif
+        }
+
+        public void SwitchProfile(int profile)
+        {
+            _profile = profile;
+            OnProfileChange.Invoke(profile);
         }
     }
 }
