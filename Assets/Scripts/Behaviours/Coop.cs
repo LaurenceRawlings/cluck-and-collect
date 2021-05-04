@@ -25,6 +25,7 @@ namespace CluckAndCollect.Behaviours
         private void Start()
         {
             Play.OnCoopsFilled.AddListener(Clear);
+            Play.OnEnter.AddListener(Clear);
             occupied.enabled = false;
         }
 

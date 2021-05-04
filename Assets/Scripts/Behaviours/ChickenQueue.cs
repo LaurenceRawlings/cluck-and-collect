@@ -22,10 +22,18 @@ namespace CluckAndCollect.Behaviours
         private void Start()
         {
             Play.OnTurnFinished.AddListener(NewChicken);
+            Play.OnEnter.AddListener(Clear);
         }
 
-        private void OnEnable()
+        private void Clear()
         {
+            foreach (var chicken in _chickenQueue)
+            {
+                Destroy(chicken);
+            }
+            
+            _chickenQueue.Clear();
+            
             foreach (var queuePosition in queuePositions)
             {
                 _chickenQueue.Enqueue(Instantiate(chickenPrefab, queuePosition.position, queuePosition.rotation));

@@ -19,12 +19,16 @@ namespace CluckAndCollect.Game.States
         [SerializeField] private int lives;
         [SerializeField] private int coops;
         [SerializeField] private GameState gameOverState;
+        [SerializeField] private CanvasGroup[] tutorialPanes;
+        [SerializeField] private CanvasGroup tutorialCanvas;
 
         private bool _moveReady;
         private bool _queueReady;
         private int _currentLives;
         private int _filledCoops;
         private int _score;
+        private bool[] _shownTutorial;
+        private int _moves;
 
         public override void Enter()
         {
@@ -33,6 +37,37 @@ namespace CluckAndCollect.Game.States
             _currentLives = lives;
             _filledCoops = 0;
             _score = 0;
+            _shownTutorial = new bool[tutorialPanes.Length];
+            _moves = 0;
+
+            ShowTutorial(0);
+        }
+
+        private void ShowTutorial(int tutorial)
+        {
+            if (!GameManager.Instance.ShowTutorial() || _shownTutorial[tutorial])
+            {
+                return;
+            }
+
+            _shownTutorial[tutorial] = true;
+            var canvasGroup = tutorialPanes[tutorial];
+            StartCoroutine(CameraController.FadeUI(canvasGroup, canvasGroup.alpha, 1, 1f));
+
+            if (tutorialCanvas.alpha < 1)
+            {
+                StartCoroutine(CameraController.FadeUI(tutorialCanvas, tutorialCanvas.alpha, 1, 1f));
+            }
+        }
+        
+        private void HideTutorials()
+        {
+            foreach (var canvasGroup in tutorialPanes)
+            {
+                StartCoroutine(CameraController.FadeUI(canvasGroup, canvasGroup.alpha, 0, 1f));
+            }
+            
+            StartCoroutine(CameraController.FadeUI(tutorialCanvas, tutorialCanvas.alpha, 0, 1f));
         }
 
         public override GameState Tick()
@@ -62,6 +97,13 @@ namespace CluckAndCollect.Game.States
 
             if (direction == Vector3.zero) return null;
 
+            _moves++;
+
+            if (_moves > 5)
+            {
+                ShowTutorial(1);
+            }
+
             _moveReady = false;
             var moveCommand = new MoveCommand(direction, GameManager.Instance.MoveDuration, Time.time);
             moveCommand.Execute();
@@ -82,6 +124,7 @@ namespace CluckAndCollect.Game.States
             Chicken.OnHit.AddListener(Death);
             Coop.OnCollect.AddListener(Collect);
             ChickenQueue.OnReady.AddListener(() => _queueReady = true);
+            HideTutorials();
         }
 
         private void Ready()
@@ -102,6 +145,20 @@ namespace CluckAndCollect.Game.States
         {
             _filledCoops++;
             _score++;
+            
+            if (!_shownTutorial[2])
+            {
+                ShowTutorial(2);
+            } 
+            else if (!_shownTutorial[3])
+            {
+                ShowTutorial(3);
+            }
+            else if (!_shownTutorial[4])
+            {
+                ShowTutorial(4);
+                Invoke(nameof(HideTutorials), 5f);
+            }
 
             if (_filledCoops >= coops)
             {

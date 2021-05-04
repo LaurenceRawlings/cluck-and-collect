@@ -115,14 +115,19 @@ namespace CluckAndCollect.Game
 
         public static void ResetHighScore(int profile)
         {
-            SetHighScore(profile, 0);
+            PlayerPrefs.DeleteKey("score" + profile);
         }
 
-        public static void SetHighScore(int profile, int score)
+        private static void SetHighScore(int profile, int score)
         {
             PlayerPrefs.SetInt("score" + profile, score);
             PlayerPrefs.Save();
             OnProfileUpdate.Invoke();
+        }
+
+        public bool ShowTutorial()
+        {
+            return !PlayerPrefs.HasKey("score" + _profile);
         }
     }
 }

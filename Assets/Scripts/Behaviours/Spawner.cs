@@ -2,6 +2,7 @@
 using System.Linq;
 using CluckAndCollect.Game;
 using CluckAndCollect.Game.Commands;
+using CluckAndCollect.Game.States;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,12 +20,11 @@ namespace CluckAndCollect.Behaviours
         private float _totalWeights;
         private float _time;
         private bool _reverse;
-        private GameManager _gameManager;
         private Transform _transform;
 
         private void Start()
         {
-            _gameManager = GameManager.Instance;
+            Play.OnEnter.AddListener(Restart);
             _transform = transform;
             Restart();
         }

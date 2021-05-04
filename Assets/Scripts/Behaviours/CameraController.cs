@@ -67,7 +67,7 @@ namespace CluckAndCollect.Behaviours
             StartCoroutine(FadeUI(ui, ui.alpha, show ? 1 : 0, duration));
         }
         
-        private static IEnumerator FadeUI(CanvasGroup ui, float start, float end, float duration)
+        public static IEnumerator FadeUI(CanvasGroup ui, float start, float end, float duration)
         {
             var counter = 0f;
 
