@@ -22,6 +22,8 @@ namespace CluckAndCollect.Behaviours
         private void Start()
         {
             Play.OnDeath.AddListener(NewChicken);
+            Play.OnCollect.AddListener(NewChicken);
+            Play.OnNewLife.AddListener(NewChicken);
         }
 
         private void OnEnable()

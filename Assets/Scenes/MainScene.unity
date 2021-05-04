@@ -35408,6 +35408,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2153540797030680988, guid: b82930fa2c732264b81edc36c782560b, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4785741018648022981, guid: b82930fa2c732264b81edc36c782560b, type: 3}
       propertyPath: m_Name
       value: Coop_4

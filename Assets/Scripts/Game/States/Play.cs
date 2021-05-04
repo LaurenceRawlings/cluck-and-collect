@@ -10,6 +10,8 @@ namespace CluckAndCollect.Game.States
         public static readonly UnityEvent OnExit = new UnityEvent();
         public static readonly UnityEvent OnDeath = new UnityEvent();
         public static readonly UnityEvent OnMove = new UnityEvent();
+        public static readonly UnityEvent OnCollect = new UnityEvent();
+        public static readonly UnityEvent OnNewLife = new UnityEvent();
 
         private bool _ready;
 
