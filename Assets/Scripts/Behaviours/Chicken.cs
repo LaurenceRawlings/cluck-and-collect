@@ -1,6 +1,8 @@
-﻿using CluckAndCollect.Game.States;
+﻿using System;
+using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CluckAndCollect.Behaviours
 {
@@ -25,6 +27,13 @@ namespace CluckAndCollect.Behaviours
                 _hits[i] = gameObject.AddComponent<AudioSource>();
                 _hits[i].clip = hitSounds[i];
             }
+            
+            UpdateVolume();
+        }
+
+        private void Start()
+        {
+            Settings.OnSettingsChange.AddListener(UpdateVolume);
         }
 
         private void OnCollisionEnter(Collision other)
@@ -35,6 +44,14 @@ namespace CluckAndCollect.Behaviours
             Play.OnDeath.Invoke();
             _transform.DOScaleY(0.1f, 0.1f);
             _hits[Random.Range(0, _hits.Length)].Play();
+        }
+        
+        private void UpdateVolume()
+        {
+            foreach (var source in _hits)
+            {
+                source.volume = PlayerPrefs.GetFloat("effects");
+            }
         }
     }
 }
