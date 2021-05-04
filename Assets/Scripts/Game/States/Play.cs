@@ -13,6 +13,8 @@ namespace CluckAndCollect.Game.States
         public static readonly UnityEvent OnDeath = new UnityEvent();
         public static readonly UnityEvent OnCoopsFilled = new UnityEvent();
         public static readonly UnityEvent OnTurnFinished = new UnityEvent();
+        public static readonly UnityEvent<int> OnLivesUpdate = new UnityEvent<int>();
+        public static readonly UnityEvent<int> OnScoreUpdate = new UnityEvent<int>();
 
         [SerializeField] private int lives;
         [SerializeField] private int coops;
@@ -22,6 +24,7 @@ namespace CluckAndCollect.Game.States
         private bool _queueReady;
         private int _currentLives;
         private int _filledCoops;
+        private int _score;
 
         public override void Enter()
         {
@@ -29,6 +32,7 @@ namespace CluckAndCollect.Game.States
             _moveReady = true;
             _currentLives = lives;
             _filledCoops = 0;
+            _score = 0;
         }
 
         public override GameState Tick()
@@ -91,18 +95,23 @@ namespace CluckAndCollect.Game.States
             _currentLives--;
             OnTurnFinished.Invoke();
             OnDeath.Invoke();
+            OnLivesUpdate.Invoke(_currentLives);
         }
 
         private void Collect()
         {
             _filledCoops++;
+            _score++;
 
             if (_filledCoops >= coops)
             {
                 _currentLives++;
+                _score += coops;
                 OnCoopsFilled.Invoke();
+                OnLivesUpdate.Invoke(_currentLives);
             }
             
+            OnScoreUpdate.Invoke(_score);
             OnTurnFinished.Invoke();
         }
     }

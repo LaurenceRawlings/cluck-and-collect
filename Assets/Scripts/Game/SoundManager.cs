@@ -1,8 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using CluckAndCollect.Behaviours;
+﻿using CluckAndCollect.Behaviours;
 using CluckAndCollect.Game.States;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace CluckAndCollect.Game
@@ -12,18 +11,19 @@ namespace CluckAndCollect.Game
         [SerializeField] private AudioClip deathSound;
         [SerializeField] private AudioClip collectSound;
         [SerializeField] private AudioClip extraLifeSound;
+        [SerializeField] private AudioClip clickSound;
         [SerializeField] private AudioClip[] jumpSounds;
         [SerializeField] private AudioClip[] backgroundSounds;
 
         private AudioSource _death;
         private AudioSource _collect;
         private AudioSource _extraLife;
+        private AudioSource _click;
         private AudioSource[] _jumps;
         private AudioSource[] _backgrounds;
 
         private void Awake()
         {
-
             _death = gameObject.AddComponent<AudioSource>();
             _death.clip = deathSound;
             
@@ -32,6 +32,9 @@ namespace CluckAndCollect.Game
             
             _extraLife = gameObject.AddComponent<AudioSource>();
             _extraLife.clip = extraLifeSound;
+            
+            _click = gameObject.AddComponent<AudioSource>();
+            _click.clip = clickSound;
 
             _jumps = new AudioSource[jumpSounds.Length];
             for (var i = 0; i < _jumps.Length; i++)
@@ -77,6 +80,11 @@ namespace CluckAndCollect.Game
         {
             _extraLife.Play();
         }
+        
+        public void Click()
+        {
+            _click.Play();
+        }
 
         private void UpdateVolume()
         {
@@ -86,6 +94,7 @@ namespace CluckAndCollect.Game
             _death.volume = effectsVolume;
             _collect.volume = effectsVolume;
             _extraLife.volume = effectsVolume;
+            _click.volume = effectsVolume;
 
             foreach (var source in _jumps)
             {

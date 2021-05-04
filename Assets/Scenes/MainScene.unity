@@ -1242,6 +1242,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 9415b1094a459ff41b98714e31cc4f90, type: 3}
   collectSound: {fileID: 0}
   extraLifeSound: {fileID: 0}
+  clickSound: {fileID: 0}
   jumpSounds:
   - {fileID: 8300000, guid: acdc4106fc598f24d9e5b4212933fb40, type: 3}
   - {fileID: 8300000, guid: d99d4244c0d31484bb0fdf514e0187e0, type: 3}
@@ -9056,7 +9057,7 @@ GameObject:
   - component: {fileID: 258068182}
   - component: {fileID: 258068181}
   m_Layer: 0
-  m_Name: LeaderboardsButton
+  m_Name: ReplayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14761,7 +14762,7 @@ GameObject:
   - component: {fileID: 414898098}
   - component: {fileID: 414898097}
   m_Layer: 0
-  m_Name: Time
+  m_Name: Lives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31012,6 +31013,7 @@ GameObject:
   - component: {fileID: 877222471}
   - component: {fileID: 877222470}
   - component: {fileID: 877222469}
+  - component: {fileID: 877222473}
   m_Layer: 0
   m_Name: Play
   m_TagString: Untagged
@@ -31113,6 +31115,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &877222473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877222467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816e7304240d4e5fa4cd57936673ea8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  livesText: {fileID: 414898097}
+  scoreText: {fileID: 1893080082}
 --- !u!4 &881572209 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a6b50acb4df6cd74e8f19a90c5e1cedc, type: 3}
@@ -33877,6 +33893,7 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 9415b1094a459ff41b98714e31cc4f90, type: 3}
   collectSound: {fileID: 8300000, guid: 1372e9ad2bbedde41a9e520480f4912c, type: 3}
   extraLifeSound: {fileID: 8300000, guid: cad75603516915f49ba1432a3eb9e0dc, type: 3}
+  clickSound: {fileID: 8300000, guid: 13b900e6d780d8f4facda2180c3e9ff5, type: 3}
   jumpSounds:
   - {fileID: 8300000, guid: acdc4106fc598f24d9e5b4212933fb40, type: 3}
   - {fileID: 8300000, guid: d99d4244c0d31484bb0fdf514e0187e0, type: 3}
@@ -45516,7 +45533,7 @@ GameObject:
   - component: {fileID: 1271310346}
   - component: {fileID: 1271310345}
   m_Layer: 0
-  m_Name: ProfilesButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64273,7 +64290,7 @@ GameObject:
   - component: {fileID: 1799449377}
   - component: {fileID: 1799449379}
   m_Layer: 0
-  m_Name: Time
+  m_Name: Lives
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,9 +1,8 @@
-﻿using System;
-using CluckAndCollect.Game;
+﻿using CluckAndCollect.Game;
 using TMPro;
 using UnityEngine;
 
-namespace CluckAndCollect.Behaviours
+namespace CluckAndCollect.UI
 {
     [RequireComponent(typeof(TextMeshPro))]
     public class ProfileBubble : MonoBehaviour
