@@ -9,6 +9,7 @@ namespace CluckAndCollect.Game.States
         public static readonly UnityEvent OnEnter = new UnityEvent();
         public static readonly UnityEvent OnExit = new UnityEvent();
         public static readonly UnityEvent OnDeath = new UnityEvent();
+        public static readonly UnityEvent OnMove = new UnityEvent();
 
         private bool ready;
 
@@ -43,8 +44,9 @@ namespace CluckAndCollect.Game.States
             ready = false;
             var moveCommand = new MoveCommand(direction, GameManager.Instance.MoveDuration, Time.time);
             moveCommand.Execute();
+            OnMove.Invoke();
 
-            return null;
+            return base.Tick();
         }
 
         public override void Exit()

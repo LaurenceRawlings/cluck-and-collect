@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 14048210}
   - component: {fileID: 14048209}
   - component: {fileID: 14048208}
+  - component: {fileID: 14048211}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1227,6 +1228,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &14048211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14048207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8ac86faba04a7f9558e863cc997389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 162bb273e064e7343b8f341bf50d39c4, type: 3}
+  jumpSounds:
+  - {fileID: 8300000, guid: acdc4106fc598f24d9e5b4212933fb40, type: 3}
+  - {fileID: 8300000, guid: d99d4244c0d31484bb0fdf514e0187e0, type: 3}
+  backgroundSounds:
+  - {fileID: 8300000, guid: dc3c5ffd87786ac49bc3edf0786a43d8, type: 3}
+  - {fileID: 8300000, guid: 0de07d4ea672cfc4485da42581a4b804, type: 3}
 --- !u!4 &18217660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f4d5439ba3d67974e842aa1b542c5325, type: 3}
