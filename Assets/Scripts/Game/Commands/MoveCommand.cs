@@ -8,6 +8,7 @@ namespace CluckAndCollect.Game.Commands
     public class MoveCommand : ICommand
     {
         public static readonly UnityEvent OnFinishMove = new UnityEvent();
+        public static readonly UnityEvent OnBadMove = new UnityEvent();
         public float Time { get; }
 
         private readonly Vector3 _direction;
@@ -65,7 +66,7 @@ namespace CluckAndCollect.Game.Commands
                     Object.Destroy(chicken);
                     OnFinishMove.Invoke();
                 });
-                Play.OnDeath.Invoke();
+                OnBadMove.Invoke();
             }
         }
     }

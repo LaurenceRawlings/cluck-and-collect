@@ -3,11 +3,14 @@ using CluckAndCollect.Game;
 using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CluckAndCollect.Behaviours
 {
     public class Coop : MonoBehaviour
     {
+        public static readonly UnityEvent OnCollect = new UnityEvent();
+
         [SerializeField] private Transform sitPosition;
         [SerializeField] private SpriteRenderer occupied;
         
@@ -21,7 +24,7 @@ namespace CluckAndCollect.Behaviours
 
         private void Start()
         {
-            Play.OnNewLife.AddListener(Clear);
+            Play.OnCoopsFilled.AddListener(Clear);
             occupied.enabled = false;
         }
 
@@ -34,7 +37,7 @@ namespace CluckAndCollect.Behaviours
             _chicken.transform.DOMove(sitPosition.position, 0.1f).SetDelay(1f);
             _chicken.transform.DORotate(sitPosition.rotation.eulerAngles, 0.1f).SetDelay(1f);
             occupied.enabled = true;
-            Play.OnCollect.Invoke();
+            OnCollect.Invoke();
         }
 
         private void Clear()

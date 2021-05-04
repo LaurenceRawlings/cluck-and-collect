@@ -1,4 +1,7 @@
-﻿using CluckAndCollect.Game.States;
+﻿using System;
+using System.Diagnostics;
+using CluckAndCollect.Behaviours;
+using CluckAndCollect.Game.States;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,10 +10,14 @@ namespace CluckAndCollect.Game
     public class SoundManager : MonoBehaviour
     {
         [SerializeField] private AudioClip deathSound;
+        [SerializeField] private AudioClip collectSound;
+        [SerializeField] private AudioClip extraLifeSound;
         [SerializeField] private AudioClip[] jumpSounds;
         [SerializeField] private AudioClip[] backgroundSounds;
 
         private AudioSource _death;
+        private AudioSource _collect;
+        private AudioSource _extraLife;
         private AudioSource[] _jumps;
         private AudioSource[] _backgrounds;
 
@@ -19,6 +26,12 @@ namespace CluckAndCollect.Game
 
             _death = gameObject.AddComponent<AudioSource>();
             _death.clip = deathSound;
+            
+            _collect = gameObject.AddComponent<AudioSource>();
+            _collect.clip = collectSound;
+            
+            _extraLife = gameObject.AddComponent<AudioSource>();
+            _extraLife.clip = extraLifeSound;
 
             _jumps = new AudioSource[jumpSounds.Length];
             for (var i = 0; i < _jumps.Length; i++)
@@ -39,6 +52,8 @@ namespace CluckAndCollect.Game
             UpdateVolume();
             
             Play.OnDeath.AddListener(Death);
+            Play.OnCoopsFilled.AddListener(ExtraLife);
+            Coop.OnCollect.AddListener(Collect);
             Play.OnMove.AddListener(Move);
             Settings.OnSettingsChange.AddListener(UpdateVolume);
         }
@@ -52,6 +67,16 @@ namespace CluckAndCollect.Game
         {
             _death.Play();
         }
+        
+        private void Collect()
+        {
+            _collect.Play();
+        }
+        
+        private void ExtraLife()
+        {
+            _extraLife.Play();
+        }
 
         private void UpdateVolume()
         {
@@ -59,6 +84,8 @@ namespace CluckAndCollect.Game
             var effectsVolume = PlayerPrefs.HasKey("effects") ? PlayerPrefs.GetFloat("effects") : 1;
             
             _death.volume = effectsVolume;
+            _collect.volume = effectsVolume;
+            _extraLife.volume = effectsVolume;
 
             foreach (var source in _jumps)
             {

@@ -1,5 +1,6 @@
 using CluckAndCollect.Behaviours;
 using CluckAndCollect.Game.States;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -50,6 +51,7 @@ namespace CluckAndCollect.Game
             CurrentState.CanvasGroup.interactable = CurrentState.CanvasGroup.blocksRaycasts = true;
             _ready = true;
             SwitchProfile(1);
+            DOTween.SetTweensCapacity(1000, 50);
         }
 
         private void Update()
@@ -66,7 +68,7 @@ namespace CluckAndCollect.Game
 
             var newState = CurrentState.Tick();
 
-            if (newState != null)
+            if (newState)
             {
                 ChangeState(newState);
             }

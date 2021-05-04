@@ -9,18 +9,26 @@ namespace CluckAndCollect.Game.States
     {
         public static readonly UnityEvent OnEnter = new UnityEvent();
         public static readonly UnityEvent OnExit = new UnityEvent();
-        public static readonly UnityEvent OnDeath = new UnityEvent();
         public static readonly UnityEvent OnMove = new UnityEvent();
-        public static readonly UnityEvent OnCollect = new UnityEvent();
-        public static readonly UnityEvent OnNewLife = new UnityEvent();
+        public static readonly UnityEvent OnDeath = new UnityEvent();
+        public static readonly UnityEvent OnCoopsFilled = new UnityEvent();
+        public static readonly UnityEvent OnTurnFinished = new UnityEvent();
+
+        [SerializeField] private int lives;
+        [SerializeField] private int coops;
+        [SerializeField] private GameState gameOverState;
 
         private bool _moveReady;
         private bool _queueReady;
+        private int _currentLives;
+        private int _filledCoops;
 
         public override void Enter()
         {
             OnEnter.Invoke();
             _moveReady = true;
+            _currentLives = lives;
+            _filledCoops = 0;
         }
 
         public override GameState Tick()
@@ -28,6 +36,11 @@ namespace CluckAndCollect.Game.States
             if (!_moveReady || !_queueReady)
             {
                 return null;
+            }
+
+            if (_currentLives <= 0)
+            {
+                return gameOverState;
             }
             
             var direction = Vector3.zero;
@@ -61,13 +74,36 @@ namespace CluckAndCollect.Game.States
         private void Start()
         {
             MoveCommand.OnFinishMove.AddListener(() => Invoke(nameof(Ready), GameManager.Instance.MoveDelay));
-            OnDeath.AddListener(() => _queueReady = false);
+            MoveCommand.OnBadMove.AddListener(Death);
+            Chicken.OnHit.AddListener(Death);
+            Coop.OnCollect.AddListener(Collect);
             ChickenQueue.OnReady.AddListener(() => _queueReady = true);
         }
 
         private void Ready()
         {
             _moveReady = true;
+        }
+
+        private void Death()
+        {
+            _queueReady = false;
+            _currentLives--;
+            OnTurnFinished.Invoke();
+            OnDeath.Invoke();
+        }
+
+        private void Collect()
+        {
+            _filledCoops++;
+
+            if (_filledCoops >= coops)
+            {
+                _currentLives++;
+                OnCoopsFilled.Invoke();
+            }
+            
+            OnTurnFinished.Invoke();
         }
     }
 }

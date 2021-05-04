@@ -2,6 +2,7 @@
 using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace CluckAndCollect.Behaviours
@@ -9,6 +10,8 @@ namespace CluckAndCollect.Behaviours
     [RequireComponent(typeof(Rigidbody))]
     public class Chicken : MonoBehaviour
     {
+        public static readonly UnityEvent OnHit = new UnityEvent();
+
         [SerializeField] private AudioClip[] hitSounds;
         
         private AudioSource[] _hits;
@@ -41,7 +44,7 @@ namespace CluckAndCollect.Behaviours
             if (!other.gameObject.CompareTag("Car")) return;
             
             _rigidbody.detectCollisions = false;
-            Play.OnDeath.Invoke();
+            OnHit.Invoke();
             _transform.DOScaleY(0.1f, 0.1f);
             _hits[Random.Range(0, _hits.Length)].Play();
         }
