@@ -33,14 +33,20 @@ namespace CluckAndCollect.Game.States
         public override void Enter()
         {
             OnEnter.Invoke();
+            SetupGame();
+            ShowTutorial(0);
+        }
+
+        private void SetupGame()
+        {
             _moveReady = true;
             _currentLives = lives;
             _filledCoops = 0;
             _score = 0;
             _shownTutorial = new bool[tutorialPanes.Length];
             _moves = 0;
-
-            ShowTutorial(0);
+            OnLivesUpdate.Invoke(lives);
+            OnScoreUpdate.Invoke(_score);
         }
 
         private void ShowTutorial(int tutorial)
@@ -79,6 +85,8 @@ namespace CluckAndCollect.Game.States
 
             if (_currentLives <= 0)
             {
+                GameManager.Instance.LastScore = _score;
+                SetupGame();
                 return gameOverState;
             }
             
@@ -105,9 +113,8 @@ namespace CluckAndCollect.Game.States
             }
 
             _moveReady = false;
-            var moveCommand = new MoveCommand(direction, GameManager.Instance.MoveDuration, Time.time);
+            var moveCommand = new MoveCommand(direction, GameManager.Instance.MoveDuration);
             moveCommand.Execute();
-            OnMove.Invoke();
 
             return base.Tick();
         }

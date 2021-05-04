@@ -151,6 +151,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridSquare_3
       objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Size.x
+      value: 3.041138
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.x
+      value: 0.52056897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.z
+      value: 3.2684966e-13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
 --- !u!4 &4495806147709299268 stripped
@@ -282,6 +294,18 @@ PrefabInstance:
     - target: {fileID: 2286845605359469935, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
       propertyPath: m_Name
       value: GridSquare_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Size.x
+      value: 2.9203944
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.x
+      value: -0.46019733
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.z
+      value: -5.8264504e-13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}

@@ -1,6 +1,8 @@
-﻿namespace CluckAndCollect.Game.Commands
+﻿using System;
+
+namespace CluckAndCollect.Game.Commands
 {
-    public interface ICommand
+    public interface ICommand : IComparable<ICommand>
     {
         public float Time { get; }
         void Execute();

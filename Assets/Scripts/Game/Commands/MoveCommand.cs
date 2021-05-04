@@ -14,11 +14,12 @@ namespace CluckAndCollect.Game.Commands
         private readonly Vector3 _direction;
         private readonly float _duration;
 
-        public MoveCommand(Vector3 direction, float duration, float time)
+        public MoveCommand(Vector3 direction, float duration)
         {
             _direction = direction;
             _duration = duration;
-            Time = time;
+            Time = UnityEngine.Time.time - GameManager.Instance.CurrentReplayData.StartTime;
+            GameManager.Instance.CurrentReplayData.Commands.Add(this);
         }
 
         public void Execute()
@@ -68,6 +69,13 @@ namespace CluckAndCollect.Game.Commands
                 });
                 OnBadMove.Invoke();
             }
+            
+            Play.OnMove.Invoke();
+        }
+        
+        public int CompareTo(ICommand other)
+        {
+            return Time.CompareTo(other.Time);
         }
     }
 }

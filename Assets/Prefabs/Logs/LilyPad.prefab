@@ -87,6 +87,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridSquare
       objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
 --- !u!4 &4082997100846833267 stripped

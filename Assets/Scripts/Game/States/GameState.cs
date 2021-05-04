@@ -9,7 +9,7 @@ namespace CluckAndCollect.Game.States
         [field: SerializeField] public float UIFadeDuration { get; private set; }
         [field: SerializeField] public CanvasGroup CanvasGroup { get; private set; }
 
-        [SerializeField] private GameState backState;
+        [SerializeField] protected GameState backState;
         
         public abstract void Enter();
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CluckAndCollect.Game.States;
 using DG.Tweening;
 using UnityEngine;
@@ -18,16 +19,18 @@ namespace CluckAndCollect.Behaviours
         [SerializeField] private GameObject chickenPrefab;
 
         private Queue<GameObject> _chickenQueue = new Queue<GameObject>();
+        private List<GameObject> _spawnedChickens = new List<GameObject>();
 
         private void Start()
         {
             Play.OnTurnFinished.AddListener(NewChicken);
             Play.OnEnter.AddListener(Clear);
+            Replay.OnEnter.AddListener(Clear);
         }
 
         private void Clear()
         {
-            foreach (var chicken in _chickenQueue)
+            foreach (var chicken in _spawnedChickens.Where(chicken => chicken != null))
             {
                 Destroy(chicken);
             }
@@ -36,7 +39,9 @@ namespace CluckAndCollect.Behaviours
             
             foreach (var queuePosition in queuePositions)
             {
-                _chickenQueue.Enqueue(Instantiate(chickenPrefab, queuePosition.position, queuePosition.rotation));
+                var chicken = Instantiate(chickenPrefab, queuePosition.position, queuePosition.rotation);
+                _chickenQueue.Enqueue(chicken);
+                _spawnedChickens.Add(chicken);
             }
 
             NewChicken();
@@ -53,7 +58,10 @@ namespace CluckAndCollect.Behaviours
                     (int) Mathf.Ceil(Vector3.Distance(nextChicken.transform.position, position)), 0.5f)
                 .OnComplete(() => OnReady.Invoke()));
             sequence.Join(nextChicken.transform.DOLocalRotate(Vector3.zero, 0.5f));
-            _chickenQueue.Enqueue(Instantiate(chickenPrefab, queueEntryPosition.position, queueEntryPosition.rotation));
+
+            var chicken = Instantiate(chickenPrefab, queueEntryPosition.position, queueEntryPosition.rotation);
+            _chickenQueue.Enqueue(chicken);
+            _spawnedChickens.Add(chicken);
 
             var chickens = _chickenQueue.ToArray();
 

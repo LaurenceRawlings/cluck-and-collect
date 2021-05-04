@@ -13,6 +13,7 @@ namespace CluckAndCollect.Game
         public static readonly UnityEvent<GameState> OnStateChange = new UnityEvent<GameState>();
         public static readonly UnityEvent<int> OnProfileChange = new UnityEvent<int>();
         public static readonly UnityEvent OnProfileUpdate = new UnityEvent();
+        public static readonly UnityEvent OnCommand = new UnityEvent();
 
         [field: SerializeField] public float GridSize { get; private set; }
         [field: SerializeField] public LayerMask GridLayer { get; private set; }
@@ -20,7 +21,8 @@ namespace CluckAndCollect.Game
         [field: SerializeField] public float MoveDuration { get; private set; }
         [field: SerializeField] public float MoveDelay { get; private set; }
         public GameState CurrentState { get; private set; }
-        public GameData CurrentGameData { get; private set; }
+        public ReplayData CurrentReplayData { get; private set; }
+        public int LastScore { get; set; }
         public ChickenQueue ChickenQueue { get; private set; }
 
         [SerializeField] private GameState startState;
@@ -49,6 +51,7 @@ namespace CluckAndCollect.Game
             CurrentState.Enter();
             CurrentState.CanvasGroup.alpha = 1;
             CurrentState.CanvasGroup.interactable = CurrentState.CanvasGroup.blocksRaycasts = true;
+            Play.OnEnter.AddListener(NewGame);
             _ready = true;
             SwitchProfile(1);
             DOTween.SetTweensCapacity(1000, 50);
@@ -90,7 +93,7 @@ namespace CluckAndCollect.Game
 
         private void NewGame()
         {
-            CurrentGameData = new GameData();
+            CurrentReplayData = new ReplayData(Time.time);
         }
 
         public void Quit()
@@ -112,22 +115,32 @@ namespace CluckAndCollect.Game
         {
             return PlayerPrefs.GetInt("score" + profile);
         }
+        
+        public int GetHighScore()
+        {
+            return PlayerPrefs.GetInt("score" + _profile);
+        }
 
         public static void ResetHighScore(int profile)
         {
             PlayerPrefs.DeleteKey("score" + profile);
+            OnProfileUpdate.Invoke();
         }
 
-        private static void SetHighScore(int profile, int score)
+        public void SetHighScore(int score)
         {
-            PlayerPrefs.SetInt("score" + profile, score);
+            PlayerPrefs.SetInt("score" + _profile, score);
             PlayerPrefs.Save();
-            OnProfileUpdate.Invoke();
         }
 
         public bool ShowTutorial()
         {
             return !PlayerPrefs.HasKey("score" + _profile);
+        }
+        
+        public bool IsHighScore(int score)
+        {
+            return score > GetHighScore(_profile);
         }
     }
 }

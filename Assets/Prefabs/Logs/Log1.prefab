@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430554818891240916}
   m_Layer: 0
-  m_Name: Log
+  m_Name: Log1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +151,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GridSquare_3
       objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Size.x
+      value: 2.9944081
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.x
+      value: 0.497204
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.z
+      value: -8.7396756e-13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
 --- !u!4 &4495806147709299268 stripped
@@ -282,6 +294,18 @@ PrefabInstance:
     - target: {fileID: 2286845605359469935, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
       propertyPath: m_Name
       value: GridSquare_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Size.x
+      value: 2.826898
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.x
+      value: -0.41344917
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610131872769802958, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}
+      propertyPath: m_Center.z
+      value: 8.9528385e-13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2402dd63ebc88f145bf53a7b562833cd, type: 3}

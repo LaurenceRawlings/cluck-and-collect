@@ -20,17 +20,28 @@ namespace CluckAndCollect.Behaviours
         private float _totalWeights;
         private float _time;
         private bool _reverse;
+        private bool _enabled;
         private Transform _transform;
 
         private void Start()
         {
             Play.OnEnter.AddListener(Restart);
+            Play.OnExit.AddListener(() => _enabled = false);
             _transform = transform;
-            Restart();
+            _reverse = reversed;
+            _time = Vector3.Distance(_transform.position, target.position) / Mathf.Ceil(Random.Range(speedBounds.x, speedBounds.y));
+            _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
+            prefabs.Sort();
+            _enabled = false;
         }
 
         private void Update()
         {
+            if (!_enabled)
+            {
+                return;
+            }
+            
             _interval -= Time.deltaTime;
             if (!(_interval <= 0)) return;
             Spawn();
@@ -39,16 +50,14 @@ namespace CluckAndCollect.Behaviours
 
         private void Restart()
         {
+            _enabled = true;
+            
             for (var i = 1; i < _transform.childCount; i++)
             {
                 Destroy(_transform.GetChild(i).gameObject);
             }
             
             // _reverse = Random.value >= 0.5f;
-            _reverse = reversed;
-            _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
-            _time = Vector3.Distance(_transform.position, target.position) / Mathf.Ceil(Random.Range(speedBounds.x, speedBounds.y));
-            prefabs.Sort();
             ResetInterval();
         }
 
@@ -79,7 +88,7 @@ namespace CluckAndCollect.Behaviours
         private void Spawn()
         {
             var spawnCommand = new SpawnCommand(GetRandomPrefab(), _reverse ? target : _transform,
-                _reverse ? _transform : target, _time, Time.time);
+                _reverse ? _transform : target, _transform, _time);
             
             spawnCommand.Execute();
         }
