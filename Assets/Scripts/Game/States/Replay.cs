@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using CluckAndCollect.Behaviours;
 using CluckAndCollect.Game.Commands;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +12,8 @@ namespace CluckAndCollect.Game.States
     {
         public static readonly UnityEvent OnEnter = new UnityEvent();
         public static readonly UnityEvent OnExit = new UnityEvent();
+
+        [SerializeField] private CanvasGroup controls;
 
         private List<ICommand> _replay;
         private float _startTime;
@@ -25,6 +29,9 @@ namespace CluckAndCollect.Game.States
             _replay.Sort();
             Play.OnLivesUpdate.Invoke(5);
             Play.OnScoreUpdate.Invoke(0);
+
+            StartCoroutine(CameraController.FadeUI(controls, controls.alpha, 1, 0.2f));
+            controls.interactable = controls.blocksRaycasts = true;
         }
 
         public override GameState Tick()
@@ -44,9 +51,30 @@ namespace CluckAndCollect.Game.States
             return base.Tick();
         }
 
+        private void Start()
+        {
+            controls.alpha = 0;
+            controls.interactable = controls.blocksRaycasts = false;
+        }
+
         public override void Exit()
         {
             OnExit.Invoke();
+            Time.timeScale = 1;
+            
+            StartCoroutine(CameraController.FadeUI(controls, controls.alpha, 0, 0.2f));
+            controls.interactable = controls.blocksRaycasts = false;
         }
+
+        public void IncreaseSpeed()
+        {
+            Time.timeScale += 0.25f;
+        }
+
+        public void DecreaseSpeed()
+        {
+            Time.timeScale -= 0.25f;
+        }
+        
     }
 }
