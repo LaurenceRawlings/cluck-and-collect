@@ -59,6 +59,7 @@ namespace CluckAndCollect.Game
             Coop.OnCollect.AddListener(Collect);
             Play.OnMove.AddListener(Move);
             Settings.OnSettingsChange.AddListener(UpdateVolume);
+            Play.OnPauseChanged.AddListener(Pause);
         }
         
         private void Move()
@@ -84,6 +85,14 @@ namespace CluckAndCollect.Game
         public void Click()
         {
             _click.Play();
+        }
+
+        private void Pause(bool isPaused)
+        {
+            foreach (var source in _backgrounds)
+            {
+                source.volume = isPaused ? 0 : (PlayerPrefs.HasKey("effects") ? PlayerPrefs.GetFloat("effects") : 1);
+            }
         }
 
         private void UpdateVolume()

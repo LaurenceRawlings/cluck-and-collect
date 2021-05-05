@@ -29,7 +29,6 @@ namespace CluckAndCollect.Behaviours
             Play.OnExit.AddListener(() => _enabled = false);
             _transform = transform;
             _reverse = reversed;
-            _time = Vector3.Distance(_transform.position, target.position) / Mathf.Ceil(Random.Range(speedBounds.x, speedBounds.y));
             _totalWeights = prefabs.Sum(prefab => prefab.Weighting);
             prefabs.Sort();
             _enabled = false;
@@ -41,7 +40,7 @@ namespace CluckAndCollect.Behaviours
             {
                 return;
             }
-            
+
             _interval -= Time.deltaTime;
             if (!(_interval <= 0)) return;
             Spawn();
@@ -51,12 +50,15 @@ namespace CluckAndCollect.Behaviours
         private void Restart()
         {
             _enabled = true;
-            
+
             for (var i = 1; i < _transform.childCount; i++)
             {
                 Destroy(_transform.GetChild(i).gameObject);
             }
             
+            _time = Vector3.Distance(_transform.position, target.position) / Mathf.Ceil(
+                Random.Range(speedBounds.x, speedBounds.y) * GameManager.Instance.DifficultySpeedMultiplier);
+
             // _reverse = Random.value >= 0.5f;
             ResetInterval();
         }
@@ -89,7 +91,7 @@ namespace CluckAndCollect.Behaviours
         {
             var spawnCommand = new SpawnCommand(GetRandomPrefab(), _reverse ? target : _transform,
                 _reverse ? _transform : target, _transform, _time);
-            
+
             spawnCommand.Execute();
         }
     }

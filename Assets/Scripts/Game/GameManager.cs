@@ -13,7 +13,6 @@ namespace CluckAndCollect.Game
         public static readonly UnityEvent<GameState> OnStateChange = new UnityEvent<GameState>();
         public static readonly UnityEvent<int> OnProfileChange = new UnityEvent<int>();
         public static readonly UnityEvent OnProfileUpdate = new UnityEvent();
-        public static readonly UnityEvent OnCommand = new UnityEvent();
 
         [field: SerializeField] public float GridSize { get; private set; }
         [field: SerializeField] public LayerMask GridLayer { get; private set; }
@@ -23,8 +22,10 @@ namespace CluckAndCollect.Game
         public GameState CurrentState { get; private set; }
         public ReplayData CurrentReplayData { get; private set; }
         public int LastScore { get; set; }
+        public float DifficultySpeedMultiplier { get; private set; }
         public ChickenQueue ChickenQueue { get; private set; }
 
+        [SerializeField] private float[] difficultySpeedMultipliers;
         [SerializeField] private GameState startState;
 
         private bool _ready;
@@ -51,6 +52,7 @@ namespace CluckAndCollect.Game
             CurrentState.Enter();
             CurrentState.CanvasGroup.alpha = 1;
             CurrentState.CanvasGroup.interactable = CurrentState.CanvasGroup.blocksRaycasts = true;
+            DifficultySpeedMultiplier = difficultySpeedMultipliers[0];
             Play.OnEnter.AddListener(NewGame);
             _ready = true;
             SwitchProfile(1);
@@ -115,7 +117,7 @@ namespace CluckAndCollect.Game
         {
             return PlayerPrefs.GetInt("score" + profile);
         }
-        
+
         public int GetHighScore()
         {
             return PlayerPrefs.GetInt("score" + _profile);
@@ -137,10 +139,15 @@ namespace CluckAndCollect.Game
         {
             return !PlayerPrefs.HasKey("score" + _profile);
         }
-        
+
         public bool IsHighScore(int score)
         {
             return score > GetHighScore(_profile);
+        }
+
+        public void SetDifficulty(int difficulty)
+        {
+            DifficultySpeedMultiplier = difficultySpeedMultipliers[difficulty];
         }
     }
 }

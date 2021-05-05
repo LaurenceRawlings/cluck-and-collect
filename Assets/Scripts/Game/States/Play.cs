@@ -15,12 +15,14 @@ namespace CluckAndCollect.Game.States
         public static readonly UnityEvent OnTurnFinished = new UnityEvent();
         public static readonly UnityEvent<int> OnLivesUpdate = new UnityEvent<int>();
         public static readonly UnityEvent<int> OnScoreUpdate = new UnityEvent<int>();
+        public static readonly UnityEvent<bool> OnPauseChanged = new UnityEvent<bool>();
 
         [SerializeField] private int lives;
         [SerializeField] private int coops;
         [SerializeField] private GameState gameOverState;
         [SerializeField] private CanvasGroup[] tutorialPanes;
         [SerializeField] private CanvasGroup tutorialCanvas;
+        [SerializeField] private CanvasGroup pauseCanvas;
 
         private bool _moveReady;
         private bool _queueReady;
@@ -29,6 +31,8 @@ namespace CluckAndCollect.Game.States
         private int _score;
         private bool[] _shownTutorial;
         private int _moves;
+        private bool _paused;
+        private bool _wantsToQuit;
 
         public override void Enter()
         {
@@ -47,6 +51,7 @@ namespace CluckAndCollect.Game.States
             _moves = 0;
             OnLivesUpdate.Invoke(lives);
             OnScoreUpdate.Invoke(_score);
+            _wantsToQuit = false;
         }
 
         private void ShowTutorial(int tutorial)
@@ -65,20 +70,37 @@ namespace CluckAndCollect.Game.States
                 StartCoroutine(CameraController.FadeUI(tutorialCanvas, tutorialCanvas.alpha, 1, 1f));
             }
         }
-        
+
         private void HideTutorials()
         {
             foreach (var canvasGroup in tutorialPanes)
             {
                 StartCoroutine(CameraController.FadeUI(canvasGroup, canvasGroup.alpha, 0, 1f));
             }
-            
+
             StartCoroutine(CameraController.FadeUI(tutorialCanvas, tutorialCanvas.alpha, 0, 1f));
         }
 
         public override GameState Tick()
         {
-            if (!_moveReady || !_queueReady)
+            if (Input.GetButtonDown("Cancel"))
+            {
+                if (_paused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+
+            if (_wantsToQuit)
+            {
+                return backState;
+            }
+
+            if (!_moveReady || !_queueReady || _paused)
             {
                 return null;
             }
@@ -89,7 +111,7 @@ namespace CluckAndCollect.Game.States
                 SetupGame();
                 return gameOverState;
             }
-            
+
             var direction = Vector3.zero;
             var vertical = Input.GetAxis("Vertical");
             var horizontal = Input.GetAxis("Horizontal");
@@ -122,6 +144,7 @@ namespace CluckAndCollect.Game.States
         public override void Exit()
         {
             OnExit.Invoke();
+            HideTutorials();
         }
 
         private void Start()
@@ -132,6 +155,9 @@ namespace CluckAndCollect.Game.States
             Coop.OnCollect.AddListener(Collect);
             ChickenQueue.OnReady.AddListener(() => _queueReady = true);
             HideTutorials();
+            _paused = false;
+            pauseCanvas.alpha = 0;
+            pauseCanvas.interactable = pauseCanvas.blocksRaycasts = false;
         }
 
         private void Ready()
@@ -152,11 +178,11 @@ namespace CluckAndCollect.Game.States
         {
             _filledCoops++;
             _score++;
-            
+
             if (!_shownTutorial[2])
             {
                 ShowTutorial(2);
-            } 
+            }
             else if (!_shownTutorial[3])
             {
                 ShowTutorial(3);
@@ -174,9 +200,51 @@ namespace CluckAndCollect.Game.States
                 OnCoopsFilled.Invoke();
                 OnLivesUpdate.Invoke(_currentLives);
             }
-            
+
             OnScoreUpdate.Invoke(_score);
             OnTurnFinished.Invoke();
+        }
+
+        public void Pause()
+        {
+            _paused = true;
+            StartCoroutine(CameraController.FadeUI(pauseCanvas, pauseCanvas.alpha, 1, 0.2f));
+            StartCoroutine(CameraController.FadeUI(CanvasGroup, CanvasGroup.alpha, 0, 0.2f));
+            Invoke(nameof(StopTime), 0.2f);
+            pauseCanvas.interactable = pauseCanvas.blocksRaycasts = true;
+            CanvasGroup.interactable = CanvasGroup.blocksRaycasts = false;
+            OnPauseChanged.Invoke(true);
+        }
+
+        private void StopTime()
+        {
+            Time.timeScale = 0;
+        }
+
+        public void Resume()
+        {
+            _paused = false;
+            Time.timeScale = 1;
+            StartCoroutine(CameraController.FadeUI(pauseCanvas, pauseCanvas.alpha, 0, 0.2f));
+            pauseCanvas.interactable = pauseCanvas.blocksRaycasts = false;
+
+            if (!_wantsToQuit)
+            {
+                StartCoroutine(CameraController.FadeUI(CanvasGroup, CanvasGroup.alpha, 1, 0.2f));
+                CanvasGroup.interactable = CanvasGroup.blocksRaycasts = true;
+            }
+
+            OnPauseChanged.Invoke(false);
+        }
+
+        public void Quit()
+        {
+            _wantsToQuit = true;
+        }
+
+        public void Restart()
+        {
+            Enter();
         }
     }
 }
